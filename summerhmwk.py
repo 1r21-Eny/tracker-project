@@ -17,8 +17,31 @@ def Process():
     print("summary: (6)")    
 
 def SleepTracking(x):
-    pass
-
+    if x == 1:
+        with open("SleepTracking.txt", "a") as st:
+            SleepTime = int(input("How many hours did you sleep (round to nearest hour): "))
+            st.write(f"{SleepTime} hours of sleep\n")
+            time.sleep(0.5)
+            print("Entry added\n")
+            time.sleep(0.5)
+    if x == 2:
+        with open("SleepTracking.txt", "r") as st:
+            for NewLine in st:
+                print(NewLine.strip())
+                time.sleep(1)
+            print("\n")
+    if x == 3:
+        with open("SleepTracking.txt", "w") as st:
+            pass
+    if x == 4:
+        with open("SleepTracking.txt", "4") as st:
+            pass
+    if x == 5:
+        with open("SleepTracking.txt", "r") as st:
+            pass
+    if x == 6:
+        with open("SleepTracking.txt", "r") as st:
+            pass
 def MoodTracking(x):
     pass
 
