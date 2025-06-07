@@ -1,4 +1,5 @@
 import time
+import datetime
 def MainMenu():
     print("\nSleep Tracking: (1)")
     print("Mood Tracking: (2)")
@@ -19,8 +20,11 @@ def Process():
 def SleepTracking(x):
     if x == 1:
         with open("SleepTracking.txt", "a") as f:
-            SleepTime = int(input("How many hours did you sleep (round to nearest hour): "))
-            f.write(f"{SleepTime} hours of sleep\n")
+            Entry = int(input("How many hours did you sleep (round to nearest hour): "))
+            Now = datetime.datetime.now()
+            date_str = Now.strftime("%d/%m/%y")
+            line_to_write = f"{date_str} - {Entry} hours of sleep\n"
+            f.write(line_to_write)
             time.sleep(0.5)
             print("Entry added\n")
             time.sleep(0.5)
@@ -46,11 +50,34 @@ def SleepTracking(x):
                 f.write(line)
         print("\n Log deleted \n")
     if x == 4:
-        with open("SleepTracking.txt", "4") as f:
-            pass
+        with open("SleepTracking.txt", "w") as f:
+            Entry = int(input("How many hours did you sleep (round to nearest hour): "))
+            Now = datetime.datetime.now()
+            date_str = Now.strftime("%d/%m/%y")
+            line_to_write = f"{date_str} - {Entry} hours of sleep\n"
+            f.write(line_to_write)
+            time.sleep(0.5)
+            print("Entry added\n")
+            time.sleep(0.5)
     if x == 5:
         with open("SleepTracking.txt", "r") as f:
-            pass
+            Search = input("Enter a date in form dd/mm/yy or hours slept to search for: ")
+            lines = f.readlines()
+            found = False
+            if len(Search) == 8 and Search[2] == '/' and Search[5] == '/':
+                for i, line in enumerate(lines, 1):
+                    if Search in line:
+                        print(f"{i}: {line.strip()}")
+                        found = True
+            else:
+                target = f"{Search} hours"
+                for i, line in enumerate(lines, 1):
+                    if target in line:
+                        print(f"{i}: {line.strip()}")
+                        found = True
+            if not found:
+                print("No matching logs found.")
+            
     if x == 6:
         with open("SleepTracking.txt", "r") as f:
             pass
