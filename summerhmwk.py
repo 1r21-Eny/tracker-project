@@ -1,3 +1,4 @@
+import time
 def MainMenu():
     print("Sleep Tracking: (1)")
     print("Mood Tracking: (2)")
@@ -6,6 +7,7 @@ def MainMenu():
     print("Game Tracking: (5)")
     print("Study Tracking: (6)")
     print("Exit: (7)")
+
 def Process():
     print("Append: (1)")
     print("Read: (2)")
@@ -13,30 +15,83 @@ def Process():
     print("rewrite: (4)")
     print("Search: (5)")
     print("summary: (6)")    
-#Sleep tracking
-#Mood tracking
-#Spending tracker
-#Book logs
-#game tracker
-#study tracking
-#main loop
 
-while True:
+def SleepTracking(x):
+    pass
+
+def MoodTracking(x):
+    pass
+
+def SpendingTracking(x):
+    pass
+
+def BookLogs(x):
+    pass
+
+def GameTracking(x):
+    pass
+
+def StudyTracking(x):
+    pass
+
+
+while True: #mainloop
     MainMenu()
     while True:
         try:
             TrackerChoice = int(input("Enter Assigned Number of Tracker to acess: "))
-            break
+            if TrackerChoice <= 7 and TrackerChoice >= 1:
+                break
+            else:
+                print("Enter number between 1 and 7")
+                continue
         except ValueError:
             print("Enter valid integer")
+    if TrackerChoice == 7:
+        while True:
+            try:
+                leaving = int(input("Do you want to exit?\n yes(1)/no(2): "))
+                if leaving == 1 or leaving == 2:
+                    break
+                else:
+                    print("Enter values 1(yes) or 2(no)")
+                    continue
+            except ValueError:
+                print("enter valid integer")
+        if leaving == 1:
+            print("bye")
+            break
+        else:
+            print("ok continuing...")
+            time.sleep(2)
+            continue
     Process()
     while True:
         try:
             ProcessChoice = int(input("Enter Assigned Number of process to run: "))
-            break
+            if ProcessChoice >= 1 and ProcessChoice <= 6:
+                break
+            else:
+                print("Enter valid number between 1 and 6")
         except ValueError:
             print("Enter an Integer")
+    if TrackerChoice == 1:
+        SleepTracking(ProcessChoice)
+    if TrackerChoice == 2:
+        MoodTracking(ProcessChoice)
+    if TrackerChoice == 3:
+        SpendingTracking(ProcessChoice)
+    if TrackerChoice == 4:
+        BookLogs(ProcessChoice)
+    if TrackerChoice == 5:
+        GameTracking(ProcessChoice)
+    if TrackerChoice == 6:
+        StudyTracking(ProcessChoice)
     
     
+    
+    
+
+
     
 
