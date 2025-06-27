@@ -1,6 +1,8 @@
 import time
 import datetime
+import tkinter as tk
 
+window = tk.Tk()
 def MainMenu():
     print("\nSleep Tracking: (1)")
     print("Mood Tracking: (2)")
